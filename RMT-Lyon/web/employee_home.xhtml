@@ -1,0 +1,38 @@
+<ui:composition
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      template="templates/employee.xhtml">
+    <ui:define name="title">
+        <title>Facelet Title</title>
+    </ui:define>
+    <ui:define name="content" >
+        <h:form>
+            <h:dataTable value="#{workTimeController.workTimeModel}" var="w">
+                <h:column>                
+                    <f:facet name="header">ID</f:facet>
+                    #{w.id}
+                </h:column>
+                <h:column>                
+                    <f:facet name="header">Start date</f:facet>
+                    #{w.starDate}
+                </h:column>
+                <h:column>                
+                    <f:facet name="header">End date</f:facet>
+                    <h:outputText value="#{w.endDate}" >
+                        <f:convertDateTime pattern="dd/MM/yyyy"/>
+                    </h:outputText>
+                </h:column>
+                <h:column>                
+                    <f:facet name="header">Client</f:facet>
+                    <h:outputText value="#{w.client.name}" />                
+                </h:column>
+                <h:column>                
+                    <f:facet name="header">Supprimer</f:facet>
+                    <h:commandLink action="#{workTimeController.delete()}" > X </h:commandLink>              
+                </h:column>
+            </h:dataTable>
+        </h:form>
+        </ui:define>
+</ui:composition>
+

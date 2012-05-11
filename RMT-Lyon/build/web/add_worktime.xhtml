@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Add Client</title>
+    </h:head>
+    <h:body>
+        <h:form>
+
+            <h:outputLabel for="startDate" value="Start date :" />
+            <h:inputText id="startDate" value="#{workTimeController.worktime.starDate}" >
+                <f:convertDateTime pattern="dd/MM/yyyy" />
+            </h:inputText><br/>
+            <h:outputLabel for="endDate" value="End date :" />
+            <h:inputText id="endDate" value="#{workTimeController.worktime.endDate}" >
+                <f:convertDateTime pattern="dd/MM/yyyy" />
+            </h:inputText><br/>
+            <h:outputLabel for="client" value="Client :" />
+            <h:selectOneMenu id="client" value="#{workTimeController.worktime.client}" converter="#{clientConverter}">
+                <f:selectItems value="#{clientController.clientItems}" />
+            </h:selectOneMenu><br/>  
+            <h:commandButton value="Add" action="#{workTimeController.create()}" />
+        </h:form>
+    </h:body>
+</html>
